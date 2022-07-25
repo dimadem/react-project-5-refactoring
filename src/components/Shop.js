@@ -1,15 +1,11 @@
 import React, { useState } from "react";
-//import Item from "./Item";
-//import AddItem from "./AddItem";
+import AddItem from "./AddItem";
 import ItemsList from "./ItemsList";
-
-//import uuid from "react-uuid";
 
 export default function Shop() {
   const [items, setItems] = useState([]);
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
-  //const [id, setId] = useState(uuid());
 
   function handleChangeName(event) {
     setName(event.target.value);
@@ -25,7 +21,10 @@ export default function Shop() {
       console.log(name, desc, "Empty Submit");
       return alert("не удалось создать товар!");
     } else {
-      setItems((prev) => [...items, { name, desc, id: prev.length }]);
+      setItems((prev) => [...items, { 
+        name, 
+        desc, 
+        id: prev.length }]);
       setName("");
       setDesc("");
     }
@@ -41,45 +40,19 @@ export default function Shop() {
   //OUTPUT
   return (
     <>
-      <form onSubmit={handleSubmitForm}>
-        <div>
-          <label htmlFor="id-name">Название:</label>
-          <input
-            id="id-name"
-            type="text"
-            placeholder="Название товара"
-            className="ui-textfield"
-            value={name}
-            onChange={handleChangeName}
-          />
-        </div>
-        <div>
-          <label htmlFor="id-desc">Описание:</label>
-          <input
-            id="id-desc"
-            type="text"
-            placeholder="Описание товара"
-            className="ui-textfield"
-            value={desc}
-            onChange={handleChangeDesc}
-          />
-        </div>
-        <div className="form-footer">
-          <div className="validation"></div>
-          <label htmlFor="id-AddButton">Добавить:</label>
-          <input
-            id="id-AddButton"
-            type="submit"
-            className="ui-button"
-            value="Добавить"
-          />
-        </div>
-      </form>
-
+      <AddItem  
+      onHandleSubmitForm={handleSubmitForm} 
+      name={name} 
+      onHandleChangeName={handleChangeName} 
+      desc={desc} 
+      onHandleChangeDesc={handleChangeDesc}  
+      />
       <div>
         <p className="ui-title">{items < [1] && "Добавьте первый товар"}</p>
       </div>
-      <ItemsList items={items} onHandleDeleteItem={()=>handleDeleteItem()}/>
+      <ItemsList 
+      items={items} 
+      onHandleDeleteItem={()=>handleDeleteItem()}/>
     </>
   );
 }
