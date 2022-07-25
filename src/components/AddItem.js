@@ -3,7 +3,7 @@
  export default function AddItem(props){
 
  return (
-    <form onSubmit={onHandleSubmitForm}>
+    <form onSubmit={props.onHandleSubmitForm}>
         <div>
           <label htmlFor="id-name">Название:</label>
           <input
@@ -12,7 +12,7 @@
             placeholder="Название товара"
             className="ui-textfield"
             value={props.name}
-            onChange={onHandleChangeName}
+            onChange={props.onHandleChangeName}
           />
         </div>
         <div>
@@ -23,7 +23,7 @@
             placeholder="Описание товара"
             className="ui-textfield"
             value={props.desc}
-            onChange={onHandleChangeDesc}
+            onChange={props.onHandleChangeDesc}
           />
         </div>
         <div className="form-footer">

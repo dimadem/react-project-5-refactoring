@@ -52,7 +52,7 @@ export default function Shop() {
       </div>
       <ItemsList 
       items={items} 
-      onHandleDeleteItem={()=>handleDeleteItem()}/>
+      onHandleDeleteItem={handleDeleteItem}/>
     </>
   );
 }
