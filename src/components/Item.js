@@ -20,7 +20,7 @@ export default function Item(props) {
   }
 
   return (
-    <div className="item">
+    <div className="item p-2">
       <div className="item-info">
         <h2 className="item-title">{info.name}</h2>
         <p className="item-desc">{info.desc}</p>

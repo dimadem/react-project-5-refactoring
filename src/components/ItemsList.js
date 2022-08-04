@@ -9,13 +9,12 @@ export default function ItemsList(props) {
       <button
         id="id-itemButton"
         className="item-button"
-        onClick={() => props.onHandleDeleteItem(item.id)}>
+        onClick={() => props.onHandleDeleteItem(item.id)}
+      >
         Удалить
       </button>
     </li>
   ));
-  
-  return (
-    <ul className="shop">{itemsList}</ul>
-  )
-};
+
+  return <ul className="shop">{itemsList}</ul>;
+}
