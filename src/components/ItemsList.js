@@ -16,5 +16,14 @@ export default function ItemsList(props) {
     </li>
   ));
 
-  return <ul className="shop">{itemsList}</ul>;
+  return (
+    <>
+      <div className="">
+        <p className="px-24 ui-title text-red-500">
+          {props.item < [1] && "Добавьте товар"}
+        </p>
+      </div>
+      <ul className="shop">{itemsList}</ul>
+    </>
+  );
 }

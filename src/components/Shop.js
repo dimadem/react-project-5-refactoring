@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import AddItem from "./AddItem";
+import uuid from "react-uuid";
+import AddItemForm from "./AddItemForm";
 import ItemsList from "./ItemsList";
 
 export default function Shop() {
@@ -32,13 +33,25 @@ export default function Shop() {
     if (name === "" || desc === "") {
       console.log(name, desc, "Empty Submit");
       return alert("не удалось создать товар!");
+      // return (
+      //   <>
+      //     <div role="alert">
+      //       <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
+      //         Danger
+      //       </div>
+      //       <div class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+      //         <p>Something not ideal might be happening.</p>
+      //       </div>
+      //     </div>
+      //   </>
+      // );
     } else {
       setItems((prev) => [
         ...items,
         {
           name,
           desc,
-          id: prev.length,
+          id: uuid(),
         },
       ]);
       setName("");
@@ -56,17 +69,21 @@ export default function Shop() {
   //OUTPUT
   return (
     <>
-      <AddItem
-        onHandleSubmitForm={handleSubmitForm}
-        name={name}
-        onHandleChangeName={handleChangeName}
-        desc={desc}
-        onHandleChangeDesc={handleChangeDesc}
-      />
-      <div>
-        <p className="ui-title">{items < [1] && "Добавьте первый товар"}</p>
+      <div className="grid grid-cols-1 content-start">
+        <AddItemForm
+          onHandleSubmitForm={handleSubmitForm}
+          name={name}
+          onHandleChangeName={handleChangeName}
+          desc={desc}
+          onHandleChangeDesc={handleChangeDesc}
+        />
+
+        <ItemsList
+          item={items.length}
+          items={items}
+          onHandleDeleteItem={handleDeleteItem}
+        />
       </div>
-      <ItemsList items={items} onHandleDeleteItem={handleDeleteItem} />
     </>
   );
 }
