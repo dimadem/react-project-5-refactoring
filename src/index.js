@@ -4,7 +4,11 @@ import Shop from "./components/Shop";
 import "./index.css";
 
 function App() {
-  return <Shop />;
+  return (
+    <>
+      <Shop />
+    </>
+  );
 }
 
 render(<App />, document.querySelector("#root"));

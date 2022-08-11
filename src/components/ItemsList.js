@@ -9,13 +9,21 @@ export default function ItemsList(props) {
       <button
         id="id-itemButton"
         className="item-button"
-        onClick={() => props.onHandleDeleteItem(item.id)}>
+        onClick={() => props.onHandleDeleteItem(item.id)}
+      >
         Удалить
       </button>
     </li>
   ));
-  
+
   return (
-    <ul className="shop">{itemsList}</ul>
-  )
-};
+    <>
+      <div className="">
+        <p className="px-24 ui-title text-red-500">
+          {props.item < [1] && "Добавьте товар"}
+        </p>
+      </div>
+      <ul className="shop">{itemsList}</ul>
+    </>
+  );
+}

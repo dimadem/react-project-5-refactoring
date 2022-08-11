@@ -1,4 +1,8 @@
-:root {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* :root {
   --primary: #0000ff;
   --secondary: #5efc8d;
   --light-gray: #cccccc;
@@ -121,4 +125,4 @@ h3 {
 
 .item-total {
   font-size: 16px;
-}
+} */
